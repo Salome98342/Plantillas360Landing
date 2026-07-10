@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Cliente</title>
+    <link rel="stylesheet" href="variablesGlobal.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header class="navbar fade-down">
+        <div class="nav-container">
+            <nav class="nav-links left-links">
+                <a href="#about" class="nav-item">Acerca de</a>
+                <a href="#products" class="nav-item">Catálogo</a>
+            </nav>
+
+            <div class="logo-wrapper">
+                <a href="#" class="logo-placeholder">LOGOTIPO</a>
+            </div>
+
+            <nav class="nav-links right-links">
+                <a href="#order" class="nav-item">Pedir</a>
+                <a href="#contact" class="nav-item">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-banner fade-up">
+        <!-- Fondo animado/splash iría como background-image en CSS o img absolute aquí -->
+        <div class="hero-content">
+            <p>Subtítulo Cliente</p>
+            <h1>TÍTULO <br> PRINCIPAL</h1>
+            <p>Texto descriptivo del producto o servicio del cliente. Espacio para slogan.</p>
+            <div>
+                <button class="btn btn-outline">Botón Secundario</button>
+                <button class="btn btn-primary">Llamado a la Acción</button>
+            </div>
+        </div>
+        <div class="hero-visuals float-anim">
+            <!-- ESPACIO PARA IMAGEN PRINCIPAL (Ej: La lata de la imagen) -->
+            <div class="hero-image-placeholder">
+                [Imagen Producto <br> Principal PNG]
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección O nas (Acerca de) -->
+    <section id="about" class="about-section fade-up">
+        <div class="about-text">
+            <h2>Acerca de nosotros</h2>
+            <p><strong>Nombre Empresa</strong> - texto introductorio fuerte para el cliente.</p>
+            <p>Párrafo secundario con detalles de los beneficios o ingredientes/servicios que ofrece la marca sin aditivos ni conservantes.</p>
+        </div>
+        <div class="about-grid">
+            <div class="pill pill-c1">Beneficio 1<br><small>Detalle</small></div>
+            <div class="pill pill-c3 pill-large">Beneficio Destacado<br><small>Texto largo descriptivo</small></div>
+            <div class="pill pill-c2">Beneficio 2<br><small>Detalle</small></div>
+            <div class="pill pill-c4">Beneficio 3<br><small>Detalle</small></div>
+        </div>
+    </section>
+
+    <!-- Sección Assortiment (Productos) -->
+    <section id="products" class="assortment-section fade-up">
+        <h2>Nuestro Catálogo</h2>
+        <div class="products-container">
+            
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <div class="product-image-placeholder float-anim" style="animation-delay: 0s;">
+                    [Img Prod 1]
+                </div>
+                <button class="product-btn btn-prod-1">Producto 1</button>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <div class="product-image-placeholder float-anim" style="animation-delay: 1s;">
+                    [Img Prod 2]
+                </div>
+                <button class="product-btn btn-prod-2">Producto 2</button>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <div class="product-image-placeholder float-anim" style="animation-delay: 2s;">
+                    [Img Prod 3]
+                </div>
+                <button class="product-btn btn-prod-3">Producto 3</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sección Contacto (Footer Banner) -->
+    <section id="contact" class="contact-banner fade-up">
+        <!-- El fondo de salpicadura de la imagen iría como background-image de esta clase -->
+        <div class="contact-text">
+            <h2>Elige [Empresa]</h2>
+            <p>Texto motivacional para que el usuario deje sus datos o haga un pedido.</p>
+            <!-- ESPACIO PARA IMAGEN DE CONTACTO (Ej: La lata acostada) -->
+        </div>
+        <form class="contact-form" id="clienteForm">
+            <input type="text" placeholder="Nombre" required>
+            <input type="tel" placeholder="Teléfono" required>
+            <textarea placeholder="Comentario"></textarea>
+            <button type="submit">Enviar Solicitud</button>
+        </form>
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

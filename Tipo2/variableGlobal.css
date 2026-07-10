@@ -1,0 +1,41 @@
+/* =========================================
+   variableGlobal.css
+   Cambia estos valores para adaptar la marca
+   ========================================= */
+:root {
+  /* Colores de Marca */
+  --color-primary: #4F46E5; /* Color principal (Botones, acentos) */
+  --color-primary-hover: #4338CA;
+  --color-secondary: #0F172A; /* Color oscuro (Fondo Hero) */
+  
+  /* Colores de Fondo y Texto */
+  --bg-light: #F8FAFC; /* Fondo sección clara */
+  --bg-white: #FFFFFF;
+  --text-dark: #1E293B;
+  --text-light: #F1F5F9;
+  --text-muted: #64748B;
+  --text-muted-light: #94A3B8;
+
+  /* Tipografía */
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Espaciados y Bordes */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+  
+  /* Sombras y Efectos */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.4);
+  
+  /* Glassmorphism para Hero */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  
+  /* Transiciones */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.4s ease;
+}

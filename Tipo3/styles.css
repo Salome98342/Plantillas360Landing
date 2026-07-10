@@ -1,0 +1,381 @@
+
+/* ==========================================
+   ESTILOS PRINCIPALES (styles.css)
+   Utiliza las variables de global.css
+========================================== */
+
+/* Reseteo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg-main);
+    color: var(--color-text-dark);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* ==========================================
+   ANIMACIONES (Reutilizables)
+========================================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 {
+    transition-delay: 0.2s;
+}
+
+/* ==========================================
+   COMPONENTES (Botones, Badges, etc.)
+========================================== */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-pill);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-dark);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-text-dark);
+    border: 2px solid transparent;
+}
+
+.btn-outline:hover {
+    color: var(--color-primary-hover);
+}
+
+.btn-outline-dark {
+    background-color: transparent;
+    color: var(--color-text-dark);
+    border: 2px solid var(--color-text-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--color-text-dark);
+    color: var(--color-white);
+}
+
+.badge {
+    display: inline-block;
+    background-color: var(--color-primary-hover);
+    color: var(--color-white);
+    padding: 4px 12px;
+    border-radius: var(--border-radius-pill);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* ==========================================
+   HEADER / NAVEGACIÓN
+========================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) 0;
+}
+
+.logo-placeholder {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--color-primary-hover);
+    letter-spacing: -0.5px;
+}
+
+nav ul {
+    display: flex;
+    gap: var(--spacing-md);
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-text-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color var(--transition-fast);
+}
+
+nav a:hover {
+    color: var(--color-primary-hover);
+}
+
+.header-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+    align-items: center;
+}
+
+/* ==========================================
+   HERO SECTION
+========================================== */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+    gap: var(--spacing-md);
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -1px;
+}
+
+.hero-title span {
+    color: var(--color-primary);
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+    max-width: 90%;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.placeholder-box {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background-color: var(--color-white);
+    border: 2px dashed #D6D3D1;
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.placeholder-box.dark {
+    background-color: var(--color-text-dark);
+    color: var(--color-white);
+    border: none;
+}
+
+/* ==========================================
+   PARTNERS SECTION
+========================================== */
+.section-label {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-primary-hover);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.partners {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    align-items: center;
+    padding-bottom: var(--spacing-xl);
+    flex-wrap: wrap;
+}
+
+.partner-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    opacity: 0.6;
+    transition: opacity var(--transition-fast);
+}
+
+.partner-logo:hover {
+    opacity: 1;
+}
+
+/* ==========================================
+   FEATURES SECTION
+========================================== */
+.features {
+    padding: var(--spacing-lg) 0;
+}
+
+.features-header {
+    text-align: left;
+    max-width: 800px;
+    margin-bottom: var(--spacing-lg);
+}
+
+.features-header h2 {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.feature-card {
+    background-color: var(--color-bg-card);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform var(--transition-fast);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* ==========================================
+   STEPS SECTION
+========================================== */
+.steps-section {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-bg-section);
+    border-radius: var(--border-radius-lg);
+    margin: var(--spacing-lg) 0;
+    padding: var(--spacing-lg);
+}
+
+.steps-visual {
+    flex: 1;
+}
+
+.steps-content {
+    flex: 1;
+}
+
+.steps-content h2 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+.steps-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.steps-list li {
+    font-size: 1.05rem;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.steps-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary-hover);
+    font-weight: bold;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN (Móviles y Tablets)
+========================================== */
+@media (max-width: 992px) {
+    .hero, .steps-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content {
+        max-width: 100%;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+    .features-header {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none; /* En producción requeriría menú hamburguesa en JS */
+    }
+    .header-actions {
+        display: none;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+    }
+}

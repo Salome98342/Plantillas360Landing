@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- [INFORMACIÓN DEL CLIENTE: Título de la página y Meta Description] -->
+  <title>[Nombre Empresa] - [Eslogan Corto]</title>
+  
+  <!-- Enlaces a CSS -->
+  <link rel="stylesheet" href="variableGlobal.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navegación -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <!-- [INFORMACIÓN DEL CLIENTE: Cargar Logo de la Empresa (Img o Texto)] -->
+      <div class="logo">
+        <div class="logo-placeholder"></div>
+        <span>[Logo Empresa]</span>
+      </div>
+      
+      <nav class="nav-links">
+        <!-- [INFORMACIÓN DEL CLIENTE: Nombres de los enlaces de navegación] -->
+        <a href="#home">[Enlace 1]</a>
+        <a href="#features">[Enlace 2]</a>
+        <a href="#how-it-works">[Enlace 3]</a>
+        <a href="#faq">[Enlace 4]</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- [INFORMACIÓN DEL CLIENTE: Textos y enlaces de botones navbar] -->
+        <a href="#" class="btn btn-ghost">[Login / Acción Secundaria]</a>
+        <a href="#" class="btn btn-primary">[Botón Principal CTA]</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Sección Hero -->
+    <section class="hero" id="home">
+      <div class="hero-bg-lines"></div> 
+      <div class="hero-glow"></div> <!-- Luz difuminada de fondo -->
+      
+      <div class="container hero-content animate-on-scroll">
+        
+        <div class="badge-pill">[Etiqueta: Ej. Fly Smarter With IA]</div>
+        <h1 class="hero-title">[Título: Ahorra Tiempo & Dinero En Cada Viaje]</h1>
+        <p class="hero-subtitle">[Subtítulo: Descubre las tarifas más baratas y recomendaciones personalizadas con nuestra plataforma.]</p>
+        
+        <a href="#" class="btn btn-primary btn-lg">[Botón: Buscar Vuelos] <span class="arrow">&rarr;</span></a>
+
+        <!-- MOCKUPS CON UI REALISTA -->
+        <div class="hero-mockups">
+          
+          <!-- TARJETA IZQUIERDA (Puntos / Recompensas) -->
+          <div class="mockup-card left floating">
+            <div class="mc-content solid-white">
+              <p class="mc-label">[Título: Tus Puntos]</p>
+              <p class="mc-sub-label">Última actualización</p>
+              <div class="mc-price-row">
+                <h3>[Valor: 13,200]</h3>
+                <span class="mc-badge-small">[Estado: Listo]</span>
+              </div>
+              <div class="mc-reward-box">
+                <div class="mc-icon-star">✨</div>
+                <div>
+                  <p class="mc-reward-title">[Siguiente: $20 off]</p>
+                  <p class="mc-reward-sub">a los 900 pts</p>
+                </div>
+                <div class="mc-arrow-btn">&rarr;</div>
+              </div>
+            </div>
+            <!-- Elementos flotantes secundarios -->
+            <div class="mc-float-item f-1"></div>
+            <div class="mc-float-item f-2"><div class="mc-avatar"></div></div>
+          </div>
+
+          <!-- TARJETA CENTRAL (Buscador IA - Principal) -->
+          <div class="mockup-card center floating-delay-1">
+            <div class="mc-content solid-white large">
+              <div class="mc-pill-center">[Herramienta: Búsqueda Inteligente]</div>
+              <h2 class="mc-main-title">[Acción: Escaneando 200+<br>Aerolíneas en Tiempo Real]</h2>
+              
+              <div class="mc-stats-row">
+                <div class="mc-circle-chart"><span>94%</span></div>
+                <p class="mc-stats-text">[Dato: Precio esperado a bajar en 3 días] 🔥</p>
+              </div>
+              
+              <!-- Imagen simulada del avión -->
+              <div class="mc-image-box">
+                <div class="mc-floating-satisfaction">
+                  <div class="avatars-group">
+                    <div class="av"></div><div class="av"></div><div class="av"></div>
+                  </div>
+                  <div class="satisfaction-text">
+                    <strong>90% [Usuarios Satisfechos]</strong>
+                    <span>[Top 5% de vuelos salvados]</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TARJETA DERECHA (Glassmorphism Azul - Mejor Oferta) -->
+          <div class="mockup-card right floating-delay-2">
+            <div class="mc-content glass-blue">
+              <div class="mc-glass-header">
+                <span class="icon">✈️</span> [Alerta: Mejor Oferta Encontrada]
+              </div>
+              <p class="mc-sub-label light">Última actualización</p>
+              <h3 class="mc-route">[Ruta: NYC &rarr; LAX]</h3>
+              <h2 class="mc-price-big">[Precio: Solo $179]</h2>
+              <p class="mc-savings">[Ahorro: Ahorraste 28% usando IA]</p>
+              
+              <div class="mc-dashed-line">
+                <span class="plane-icon">✈</span>
+              </div>
+              <div class="mc-arrow-btn bottom-right">&rarr;</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Características -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <div class="badge-pill light">[Etiqueta: Sección IA]</div>
+          <h2>[Título: Viaja Sin Esfuerzo con IA]</h2>
+          <p>[Subtítulo: Disfruta reservas fluidas, predicciones inteligentes y recompensas.]</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- TARJETA DESTACADA (Fondo Azul) -->
+          <div class="feature-card highlight animate-on-scroll">
+            <div class="feature-icon dark-mode">📊</div>
+            <h3>[Beneficio 1: Predicciones en Tiempo Real]</h3>
+            <p>[Descripción: IA te dice exactamente cuándo reservar para obtener el mejor precio.]</p>
+            <a href="#" class="feature-link dark-mode">[Ver más] &rarr;</a>
+          </div>
+
+          <!-- Tarjetas Normales -->
+          <div class="feature-card animate-on-scroll delay-1">
+            <div class="feature-icon">📍</div>
+            <h3>[Beneficio 2: Rutas Inteligentes]</h3>
+            <p>[Descripción: Sugerencias de rutas más rápidas o confortables.]</p>
+            <a href="#" class="feature-link">[Ver más] &rarr;</a>
+          </div>
+
+          <div class="feature-card animate-on-scroll delay-2">
+            <div class="feature-icon">⭐</div>
+            <h3>[Beneficio 3: Rastreo Dinámico]</h3>
+            <p>[Descripción: Mira cómo crecen tus puntos en base a tus preferencias.]</p>
+            <a href="#" class="feature-link">[Ver más] &rarr;</a>
+          </div>
+          
+          <div class="feature-card animate-on-scroll delay-3">
+            <div class="feature-icon">🔔</div>
+            <h3>[Beneficio 4: Alertas Personalizadas]</h3>
+            <p>[Descripción: Recibe avisos de caída de precio en tus rutas favoritas.]</p>
+            <a href="#" class="feature-link">[Ver más] &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

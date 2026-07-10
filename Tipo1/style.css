@@ -1,0 +1,197 @@
+@import url('variablesGlobal.css');
+
+/* --- Navegación (Header Profesional) --- */
+.navbar { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(12px); /* Efecto cristal moderno */
+    -webkit-backdrop-filter: blur(12px);
+    transition: padding 0.4s ease, box-shadow 0.4s ease, background 0.4s ease; 
+    padding: 25px 0; 
+}
+
+/* Estado de la barra al hacer scroll */
+.navbar.scrolled {
+    padding: 12px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links { 
+    display: flex; 
+    gap: 35px; 
+    flex: 1; /* Distribuye el espacio equitativamente */
+}
+.left-links { justify-content: flex-end; padding-right: 40px; }
+.right-links { justify-content: flex-start; padding-left: 40px; }
+
+.nav-item { 
+    font-size: 0.9rem; 
+    font-weight: 500; 
+    color: var(--color-text-nav); 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative; 
+    padding: 5px 0; 
+    transition: color 0.3s ease; 
+}
+
+/* Animación de subrayado en los enlaces */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-hover-nav);
+    transition: width 0.3s ease, left 0.3s ease;
+    border-radius: 2px;
+}
+.nav-item:hover { color: var(--color-hover-nav); }
+.nav-item:hover::after { width: 100%; left: 0; }
+
+.logo-wrapper { flex: 0 0 auto; }
+.logo-placeholder { 
+    font-weight: 800; 
+    font-size: 1.8rem; 
+    color: var(--color-hover-nav); 
+    letter-spacing: -1px; 
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación elástica */
+}
+.logo-placeholder:hover {
+    transform: scale(1.1) rotate(-3deg);
+}
+
+/* Animación de entrada inicial (De arriba hacia abajo) */
+.fade-down {
+    animation: slideDown 1s ease-out forwards;
+}
+@keyframes slideDown {
+    0% { opacity: 0; transform: translateY(-100%); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* MUY IMPORTANTE: Evita que el menú tape tu Hero section */
+body { padding-top: 100px; }
+
+/* Responsividad para móviles (oculta los enlaces laterales y deja el menú hamburguesa pendiente) */
+@media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-container { justify-content: center; }
+}
+
+/* --- Reseteo y Base --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-family); background-color: var(--color-bg-main); color: var(--color-text-main); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* --- Animaciones --- */
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.float-anim { animation: float 6s ease-in-out infinite; }
+@keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+
+/* --- Navegación --- */
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; font-weight: 500; font-size: 0.9rem; }
+.nav-links { display: flex; gap: 30px; }
+.logo-placeholder { font-weight: bold; font-size: 1.5rem; color: var(--color-hero-bg); }
+
+/* --- Hero Section --- */
+.hero-banner { 
+    background: var(--color-hero-bg); 
+    border-radius: var(--border-radius-lg); 
+    padding: 60px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: var(--spacing-section);
+}
+.hero-content { max-width: 40%; z-index: 2; }
+.hero-content h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px; }
+.hero-content p { font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; }
+.hero-visuals { width: 50%; display: flex; justify-content: center; position: relative; z-index: 2; }
+.hero-image-placeholder { width: 250px; height: 400px; background: rgba(255,255,255,0.2); border-radius: 20px; border: 2px dashed rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; text-align: center;}
+
+/* Botones */
+.btn { padding: 12px 28px; border-radius: 30px; font-weight: bold; border: none; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.btn-primary { background-color: var(--color-hero-btn); color: white; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+.btn-outline { background: transparent; border: 2px solid white; color: white; margin-right: 15px; }
+
+/* --- Acerca de (O nas) --- */
+.about-section { display: flex; gap: 50px; margin-bottom: var(--spacing-section); align-items: center; }
+.about-text { flex: 1; }
+.about-text h2 { font-size: 2.5rem; margin-bottom: 20px; }
+.about-text p { color: var(--color-text-muted); margin-bottom: 15px; font-size: 1.1rem; }
+
+/* Grilla de Píldoras tipo estetica de la imagen */
+.about-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.pill { padding: 25px; border-radius: var(--border-radius-md); display: flex; flex-direction: column; justify-content: center; font-weight: bold; font-size: 0.9rem; }
+.pill-large { grid-row: span 2; }
+.pill-c1 { background-color: var(--color-pill-1); color: white; }
+.pill-c2 { background-color: var(--color-pill-2); color: white; }
+.pill-c3 { background-color: var(--color-pill-3); color: var(--color-text-main); }
+.pill-c4 { background-color: var(--color-pill-4); color: white; }
+
+/* --- Surtido / Productos --- */
+.assortment-section { text-align: center; margin-bottom: var(--spacing-section); }
+.assortment-section h2 { font-size: 2.5rem; margin-bottom: 50px; }
+.products-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.product-card { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.product-image-placeholder { width: 180px; height: 280px; background: #f0f0f0; border-radius: 20px; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; }
+.product-btn { padding: 10px 25px; border-radius: 20px; font-weight: bold; border: none; width: 100%; cursor: pointer; color: white; }
+/* Colores de ejemplo para los botones de producto */
+.btn-prod-1 { background-color: #85c26b; }
+.btn-prod-2 { background-color: #ff85a2; }
+.btn-prod-3 { background-color: #ffb142; }
+
+/* --- Contacto / Banner Final --- */
+.contact-banner {
+    background: var(--color-contact-bg);
+    border-radius: var(--border-radius-lg);
+    padding: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+.contact-text { flex: 1; z-index: 2; padding-right: 40px; }
+.contact-text h2 { font-size: 2.5rem; margin-bottom: 15px; }
+.contact-form { flex: 1; z-index: 2; display: flex; flex-direction: column; gap: 15px; max-width: 400px; }
+.contact-form input, .contact-form textarea {
+    width: 100%; padding: 15px 20px; border-radius: var(--border-radius-md); border: none; font-family: inherit; font-size: 1rem; outline: none;
+}
+.contact-form textarea { resize: none; height: 100px; }
+.contact-form button { align-self: flex-end; background-color: rgba(255,255,255,0.3); color: white; border: 1px solid white; padding: 12px 30px; border-radius: 30px; cursor: pointer; transition: background 0.3s; }
+.contact-form button:hover { background-color: white; color: var(--color-contact-bg); }
+
+/* --- Responsividad --- */
+@media (max-width: 900px) {
+    .hero-banner, .about-section, .contact-banner { flex-direction: column; text-align: center; padding: 40px 20px; }
+    .hero-content { max-width: 100%; margin-bottom: 40px; }
+    .hero-visuals { width: 100%; }
+    .contact-text { padding-right: 0; margin-bottom: 30px; }
+    .nav-links { display: none; /* Simplificación para móvil */ }
+}

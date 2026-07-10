@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla Landing Page Financiera</title> <!-- REEMPLAZAR: Título de la página del cliente -->
+    
+    <!-- Fuentes (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos (Phosphor Icons - Ligero y moderno) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuración de Tailwind para adaptar colores e integrarse con CSS variables -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: 'var(--color-brand-light)',
+                            DEFAULT: 'var(--color-brand-primary)',
+                            dark: 'var(--color-brand-dark)',
+                        },
+                        accent: {
+                            DEFAULT: 'var(--color-accent)',
+                        },
+                        bg: {
+                            main: 'var(--color-bg-main)',
+                            section: 'var(--color-bg-section)',
+                        },
+                        text: {
+                            main: 'var(--color-text-main)',
+                            muted: 'var(--color-text-muted)',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Variables Globales y Estilos Personalizados -->
+    <style>
+        :root {
+            /* 
+             * REEMPLAZAR: Paleta de colores del cliente.
+             * Ajusta estas variables para cambiar todo el tema de la página rápidamente.
+             */
+            --color-brand-primary: #77C323; /* Verde principal (eje: botones, textos destacados) */
+            --color-brand-light: #B4F556;   /* Verde claro (eje: fondos de tarjetas, acentos) */
+            --color-brand-dark: #4A7A16;    /* Verde oscuro (para hover o contrastes) */
+            --color-accent: #0E6C75;        /* Color secundario/acento (eje: textos específicos) */
+            
+            --color-bg-main: #F4F3ED;       /* Fondo general de la página */
+            --color-bg-section: #B4F556;    /* Fondo de secciones destacadas */
+            
+            --color-text-main: #1C1C1C;     /* Texto principal oscuro */
+            --color-text-muted: #5A5A5A;    /* Texto secundario gris */
+        }
+
+        body {
+            background-color: var(--color-bg-main);
+            color: var(--color-text-main);
+            overflow-x: hidden;
+        }
+
+        /* Utilidad para revelar elementos al hacer scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Estilos específicos para la sección Hero imitando las tarjetas superpuestas */
+        .hero-graphics-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        /* Gradientes sutiles para fondos de tarjetas en "Features" */
+        .feature-card-gradient {
+            background: linear-gradient(135deg, var(--color-brand-light) 0%, rgba(180, 245, 86, 0.6) 100%);
+        }
+
+        /* Menú móvil */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 400px; /* Ajustar según sea necesario */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HEADER -->
+    <header class="fixed w-full top-0 z-50 bg-bg-main/80 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300" id="header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-brand text-2xl font-bold flex items-center gap-2">
+                        <!-- REEMPLAZAR: Logo del cliente. Usar <img> para SVG o PNG, o texto -->
+                        <i class="ph-fill ph-infinity text-3xl"></i>
+                        <span>APIՈ57</span> <!-- Texto de ejemplo del logo -->
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <!-- REEMPLAZAR: Enlaces de navegación -->
+                    <a href="#features" class="text-text-main hover:text-brand font-medium transition-colors">Features</a>
+                    <a href="#how-it-works" class="text-text-main hover:text-brand font-medium transition-colors">How it Works</a>
+                    <a href="#pricing" class="text-text-main hover:text-brand font-medium transition-colors">Pricing</a>
+                    <a href="#about" class="text-text-main hover:text-brand font-medium transition-colors">About</a>
+                    <a href="#testimonials" class="text-text-main hover:text-brand font-medium transition-colors">Testimonials</a>
+                    <a href="#contact" class="text-text-main hover:text-brand font-medium transition-colors">Contact</a>
+                </nav>
+
+                <!-- CTA Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- REEMPLAZAR: Textos y URLs de los botones -->
+                    <a href="#" class="text-brand font-medium hover:text-brand-dark transition-colors">Log In</a>
+                    <a href="#" class="px-5 py-2 border-2 border-brand text-brand rounded-full hover:bg-brand hover:text-white font-medium transition-all duration-300">Get Started</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-text-main hover:text-brand focus:outline-none">
+                        <i class="ph ph-list text-3xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="md:hidden bg-bg-main border-b border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <!-- REEMPLAZAR: Enlaces de navegación móvil -->
+                <a href="#features" class="block px-3 py-2 text-text-main font-medium hover:text-brand">Features</a>
+                <a href="#how-it-works" class="block px-3 py-2 text-text-main font-medium hover:text-brand">How it Works</a>
+                <a href="#pricing" class="block px-3 py-2 text-text-main font-medium hover:text-brand">Pricing</a>
+                <div class="mt-4 pt-4 border-t border-gray-200 flex flex-col gap-2">
+                    <a href="#" class="block px-3 py-2 text-brand font-medium text-center">Log In</a>
+                    <a href="#" class="block px-3 py-2 bg-brand text-white rounded-full font-medium text-center">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24"> <!-- Padding top para compensar el header fijo -->
+
+        <!-- HERO SECTION -->
+        <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Hero Text -->
+                <div class="z-10 animate-fade-in-up">
+                    <h1 class="text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        <!-- REEMPLAZAR: Titular principal. Usa etiquetas <span> con clases de color para destacar palabras -->
+                        Your Partner in <br>
+                        Smarter <span class="text-brand">Financial</span><br>
+                        <span class="text-brand">Decisions</span>
+                    </h1>
+                    <p class="text-lg text-text-muted mb-8 max-w-lg">
+                        <!-- REEMPLAZAR: Subtítulo / Descripción corta -->
+                        Take control of your money with tools designed to help you save more, invest wisely, and plan ahead — effortlessly.
+                    </p>
+                    
+                    <div class="flex flex-wrap items-center gap-4 mb-10">
+                        <!-- REEMPLAZAR: Botón CTA principal -->
+                        <a href="#" class="px-8 py-3 bg-brand text-white rounded-full font-semibold hover:bg-brand-dark hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                            Talk to an Expert
+                        </a>
+                        <!-- REEMPLAZAR: Botón secundario (ej. video) -->
+                        <a href="#" class="flex items-center gap-2 text-text-main font-medium hover:text-brand transition-colors group">
+                            <div class="w-10 h-10 rounded-full border-2 border-text-main flex items-center justify-center group-hover:border-brand transition-colors">
+                                <i class="ph-fill ph-play text-xl group-hover:text-brand"></i>
+                            </div>
+                            Watch Video
+                        </a>
+                    </div>
+
+                    <!-- Pills / Tags -->
+                    <div class="flex flex-wrap gap-3">
+                        <!-- REEMPLAZAR: Etiquetas o características clave -->
+                        <span class="px-4 py-1.5 rounded-full border border-gray-300 text-sm text-text-muted hover:border-brand cursor-default transition-colors">Market Insights</span>
+                        <span class="px-4 py-1.5 rounded-full border border-gray-300 text-sm text-text-muted hover:border-brand cursor-default transition-colors">Invest</span>
+                        <span class="px-4 py-1.5 rounded-full border border-gray-300 text-sm text-text-muted hover:border-brand cursor-default transition-colors">Grow</span>
+                        <span class="px-4 py-1.5 rounded-full border border-gray-300 text-sm text-text-muted hover:border-brand cursor-default transition-colors">Plan</span>
+                        <span class="px-4 py-1.5 rounded-full border border-gray-300 text-sm text-text-muted hover:border-brand cursor-default transition-colors">Budget</span>
+                        <span class="px-4 py-1.5 rounded-full border border-gray-300 text-sm text-text-muted hover:border-brand cursor-default transition-colors">Expert Tips</span>
+                    </div>
+                </div>
+
+                <!-- Hero Graphics (Mockup of cards) -->
+                <div class="relative lg:h-[500px] flex justify-center lg:justify-end items-center lg:animate-fade-in-up">
+                    <!-- Decoración circular de fondo -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-64 h-64 border border-brand/30 rounded-full absolute animate-[spin_20s_linear_infinite]"></div>
+                        <div class="w-96 h-96 border border-brand/20 rounded-full absolute animate-[spin_30s_linear_reverse_infinite]"></div>
+                    </div>
+
+                    <div class="hero-graphics-container relative w-full max-w-[450px]">
+                        <!-- REEMPLAZAR: Aquí idealmente iría una imagen del producto (App, Dashboard). 
+                             He creado una representación con HTML/CSS basándome en el diseño, 
+                             pero para un cliente real, reemplazar este bloque por su <img> -->
+                             
+                        <!-- Tarjeta Frontal Verde -->
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-80 h-48 bg-gradient-to-br from-brand to-brand-dark rounded-2xl p-5 shadow-2xl text-white animate-float">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="text-xl font-bold tracking-widest italic">VISA</div>
+                                <i class="ph ph-wifi-high text-2xl"></i>
+                            </div>
+                            <div class="text-sm opacity-80 mb-1">Credit card number</div>
+                            <div class="font-mono text-xl tracking-wider mb-6">5337 8662 4901 3294</div>
+                            <div class="flex justify-between text-sm">
+                                <div>
+                                    <div class="opacity-80 text-xs">Name</div>
+                                    <div class="font-medium">Bianca Taylor</div>
+                                </div>
+                                <div>
+                                    <div class="opacity-80 text-xs">Exp. Date</div>
+                                    <div class="font-medium">03/24</div>
+                                </div>
+                                <div class="flex items-center">
+                                     <div class="w-8 h-5 bg-white/20 rounded-full backdrop-blur-sm flex items-center justify-between px-1">
+                                        <div class="w-3 h-3 bg-white rounded-full"></div>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Trasera Oscura -->
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-[60%] translate-y-[20%] z-10 w-72 h-44 bg-[#1a2f24] rounded-2xl p-5 shadow-xl text-white opacity-90 animate-float-delayed">
+                            <i class="ph-fill ph-sim-card text-2xl mb-4 text-brand"></i>
+                            <div class="font-mono text-lg tracking-wider mb-8">5337 8662 4901 3294</div>
+                            <div class="flex justify-between text-xs text-gray-400">
+                                <span>Maria Smith</span>
+                                <span>10/31</span>
+                            </div>
+                        </div>
+
+                        <!-- Elementos Flotantes extra -->
+                        <div class="absolute -top-10 left-10 z-30 glass-card p-3 rounded-xl flex flex-col gap-2 animate-float-delayed">
+                            <span class="text-xs font-semibold">Statistics</span>
+                            <div class="flex items-end gap-1 h-12">
+                                <div class="w-2 bg-gray-300 rounded-t h-full"></div>
+                                <div class="w-2 bg-brand rounded-t h-3/4"></div>
+                                <div class="w-2 bg-gray-300 rounded-t h-1/2"></div>
+                                <div class="w-2 bg-brand rounded-t h-4/5"></div>
+                                <div class="w-2 bg-gray-300 rounded-t h-full"></div>
+                                <div class="w-2 bg-brand rounded-t h-full"></div>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-10 right-0 z-30 bg-white p-2 rounded-lg shadow-lg flex items-center gap-2 animate-float">
+                            <div class="bg-brand text-white p-1.5 rounded">
+                                <i class="ph-fill ph-trend-up"></i>
+                            </div>
+                            <span class="text-xs font-medium pr-2">Income</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARTNERS SECTION -->
+        <section class="border-y border-gray-200 bg-white/50 py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-sm font-semibold text-accent mb-6 uppercase tracking-wider">Partner Companies</p>
+                <div class="flex flex-wrap justify-center md:justify-between items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                    <!-- REEMPLAZAR: Logos de empresas asociadas. Usa imágenes SVG preferiblemente -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" class="h-8 object-contain">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard" class="h-10 object-contain">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Plaid_logo.svg/2560px-Plaid_logo.svg.png" alt="Plaid" class="h-8 object-contain">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Forbes_logo.svg/2560px-Forbes_logo.svg.png" alt="Forbes" class="h-6 object-contain">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Deloitte.svg/2560px-Deloitte.svg.png" alt="Deloitte" class="h-6 object-contain">
+                </div>
+            </div>
+        </section>
+
+        <!-- VALUE PROPOSITION SECTION -->
+        <section id="features" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+            <div class="mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 reveal">
+                <div class="max-w-3xl">
+                    <span class="inline-block px-3 py-1 bg-brand-dark text-white rounded-full text-xs font-bold uppercase tracking-wider mb-4">Features</span>
+                    <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+                        <!-- REEMPLAZAR: Título de la propuesta de valor -->
+                        Achieve <span class="text-brand">financial clarity</span> and take control of your future with tools designed to simplify, streamline, and personalize your <span class="text-accent">money management</span> — all in one secure platform.
+                    </h2>
+                </div>
+                <p class="text-text-muted text-sm whitespace-nowrap">
+                     <!-- REEMPLAZAR: Texto pequeño descriptivo -->
+                    Everything you need, nothing you don't.
+                </p>
+            </div>
+
+            <!-- CARDS GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1: Imagen -->
+                <div class="rounded-3xl overflow-hidden reveal h-80 relative bg-brand-light">
+                     <!-- REEMPLAZAR: Imagen descriptiva para característica 1 -->
+                     <!-- Usando un placeholder colorido como ejemplo si no hay imagen -->
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1616514197671-15d99ce7a6f8?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center mix-blend-multiply opacity-50"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-brand/80 to-transparent">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4">
+                             <i class="ph-fill ph-wallet text-brand text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="feature-card-gradient rounded-3xl p-8 flex flex-col justify-between reveal h-80 relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 text-9xl font-bold text-white/20 group-hover:scale-110 transition-transform duration-500">
+                        <i class="ph-fill ph-bell-ringing"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <!-- REEMPLAZAR: Título y descripción de característica 2 -->
+                        <h3 class="text-xl font-bold text-brand-dark mb-2">Automated Budgeting & Alerts</h3>
+                    </div>
+                    <p class="relative z-10 text-sm text-brand-dark/80 mt-auto">
+                        Create custom budgets and get real-time alerts to stay on track every month.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="feature-card-gradient rounded-3xl p-8 flex flex-col justify-between reveal h-80 relative overflow-hidden group" style="transition-delay: 100ms;">
+                    <div class="absolute -right-4 -bottom-10 text-9xl font-bold text-white/20 group-hover:scale-110 transition-transform duration-500">
+                         <i class="ph-fill ph-chart-pie-slice"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <!-- REEMPLAZAR: Título y descripción de característica 3 -->
+                        <h3 class="text-xl font-bold text-brand-dark mb-2">Unified Account Dashboard</h3>
+                    </div>
+                    <p class="relative z-10 text-sm text-brand-dark/80 mt-auto">
+                        View all your bank accounts, cards, and transactions in one intuitive interface.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="feature-card-gradient rounded-3xl p-8 flex flex-col justify-between reveal h-80 relative overflow-hidden group" style="transition-delay: 200ms;">
+                    <div class="absolute -right-5 -bottom-12 text-[150px] font-bold text-white/20 group-hover:scale-110 transition-transform duration-500 leading-none">
+                        $
+                    </div>
+                    <div class="relative z-10">
+                        <!-- REEMPLAZAR: Título y descripción de característica 4 -->
+                        <h3 class="text-xl font-bold text-brand-dark mb-2">Personalized Financial Insights</h3>
+                    </div>
+                    <p class="relative z-10 text-sm text-brand-dark/80 mt-auto">
+                        Get smart, actionable advice based on your spending habits and savings goals.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS SECTION (Full width colored background) -->
+        <section id="how-it-works" class="bg-brand-light py-24 relative overflow-hidden">
+            <!-- Typographic background decoration -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none overflow-hidden">
+                 <span class="text-[300px] font-black tracking-tighter text-brand-dark whitespace-nowrap">APIՈ57</span>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    
+                    <!-- Dashboard UI Mockup -->
+                    <div class="reveal">
+                        <!-- REEMPLAZAR: Imagen de la interfaz de usuario del cliente. 
+                             Si no hay, este contenedor oscuro simula una interfaz de app -->
+                        <div class="bg-[#1C1C1E] rounded-[40px] p-8 shadow-2xl text-white relative mx-auto max-w-md">
+                            
+                            <!-- Top bar mock -->
+                            <div class="flex justify-between items-center mb-10">
+                                <div class="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 text-sm">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/800px-Flag_of_the_United_States.svg.png" class="w-5 h-5 rounded-full object-cover">
+                                    US Dollar
+                                </div>
+                                <button class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition">
+                                    <i class="ph ph-bell text-xl"></i>
+                                </button>
+                            </div>
+
+                            <!-- Balance -->
+                            <div class="mb-12">
+                                <p class="text-gray-400 text-sm mb-2">Available Total Balance</p>
+                                <h3 class="text-5xl font-bold tracking-tight">$ 47,586.32</h3>
+                            </div>
+
+                            <!-- Actions -->
+                            <div class="flex gap-4">
+                                <button class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition shrink-0">
+                                    <i class="ph ph-squares-four text-2xl"></i>
+                                </button>
+                                <button class="flex-1 flex items-center justify-center gap-2 rounded-2xl border border-white/20 hover:bg-white/10 transition font-medium">
+                                    <i class="ph ph-arrow-down-left"></i> Request
+                                </button>
+                                <button class="flex-1 flex items-center justify-center gap-2 rounded-2xl border border-white/20 hover:bg-white/10 transition font-medium">
+                                    <i class="ph ph-arrow-up-right"></i> Transfer
+                                </button>
+                                <button class="w-14 h-14 rounded-2xl bg-brand text-brand-dark flex items-center justify-center hover:bg-brand-light transition shrink-0 shadow-[0_0_15px_rgba(119,195,35,0.5)]">
+                                    <i class="ph-bold ph-plus text-2xl"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Steps Text -->
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <h2 class="text-4xl font-bold text-brand-dark mb-10">
+                            <!-- REEMPLAZAR: Título de la sección de pasos -->
+                            Start Managing Your<br>Money in 3 Easy Steps
+                        </h2>
+
+                        <div class="space-y-8">
+                            <!-- Step 1 -->
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-full bg-brand/20 flex items-center justify-center shrink-0">
+                                    <i class="ph-fill ph-user-plus text-brand-dark text-xl"></i>
+                                </div>
+                                <div>
+                                    <!-- REEMPLAZAR: Paso 1 -->
+                                    <p class="text-brand-dark font-medium leading-relaxed">
+                                        <strong class="block mb-1">Sign Up and Connect Accounts.</strong>
+                                        Link your bank, credit cards, and wallets with bank-level encryption.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-full bg-brand/20 flex items-center justify-center shrink-0">
+                                    <i class="ph-fill ph-chart-line-up text-brand-dark text-xl"></i>
+                                </div>
+                                <div>
+                                    <!-- REEMPLAZAR: Paso 2 -->
+                                    <p class="text-brand-dark font-medium leading-relaxed">
+                                        <strong class="block mb-1">Smart Investment Insights.</strong>
+                                        AI-backed recommendations tailored to your risk profile.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-full bg-brand/20 flex items-center justify-center shrink-0">
+                                    <i class="ph-fill ph-shield-check text-brand-dark text-xl"></i>
+                                </div>
+                                <div>
+                                    <!-- REEMPLAZAR: Paso 3 -->
+                                    <p class="text-brand-dark font-medium leading-relaxed">
+                                        <strong class="block mb-1">Secure Multi-Account Sync.</strong>
+                                        All your accounts in one place — encrypted and always up-to-date.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING TEASER SECTION -->
+        <section id="pricing" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-12 reveal">
+                <div>
+                    <span class="inline-block px-4 py-1 bg-brand text-white rounded-full text-sm font-bold mb-4">Pricing</span>
+                    <!-- REEMPLAZAR: Texto de introducción a precios -->
+                    <p class="text-text-muted max-w-2xl text-sm leading-relaxed">
+                        Elit vestibulum vel tellus duis feugiat eu. At metus amet lacus lacus amet id tincidunt. Diam id id sit interdum leo. Donec aliquet aliquam arcu in. At elit vulputate pulvinar faucibus. Nibh parturient felis nibh.
+                    </p>
+                </div>
+                <div class="mt-4 md:mt-0 text-right">
+                    <p class="font-medium text-text-main">Try it free. Upgrade anytime.</p>
+                </div>
+            </div>
+            
+            <!-- Aquí podrías añadir tarjetas de precios si el cliente las necesita -->
+            <!-- Dejado como espacio en blanco según el diseño final de la imagen -->
+            <div class="w-full h-32 bg-gray-100 rounded-3xl border border-gray-200 flex items-center justify-center border-dashed">
+                <span class="text-gray-400"><!-- ESPACIO PARA TABLA DE PRECIOS --></span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-gray-200 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+                <!-- Logo -->
+                <a href="#" class="text-brand text-2xl font-bold flex items-center gap-2">
+                    <i class="ph-fill ph-infinity text-3xl"></i>
+                    <span>APIՈ57</span>
+                </a>
+                
+                <!-- Social Links -->
+                <div class="flex gap-4">
+                     <!-- REEMPLAZAR: Enlaces a redes sociales -->
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-text-muted hover:bg-brand hover:text-white transition"><i class="ph-fill ph-twitter-logo"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-text-muted hover:bg-brand hover:text-white transition"><i class="ph-fill ph-linkedin-logo"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-text-muted hover:bg-brand hover:text-white transition"><i class="ph-fill ph-instagram-logo"></i></a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-text-muted">
+                <p>&copy; 2026 APIՈ57. All rights reserved.</p> <!-- REEMPLAZAR: Nombre de empresa en copyright -->
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-brand transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-brand transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Menú Móvil ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+                
+                // Cambiar icono
+                if(mobileMenu.classList.contains('open')) {
+                    menuIcon.classList.remove('ph-list');
+                    menuIcon.classList.add('ph-x');
+                } else {
+                    menuIcon.classList.remove('ph-x');
+                    menuIcon.classList.add('ph-list');
+                }
+            });
+
+            // Cerrar menú móvil al hacer clic en un enlace
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    menuIcon.classList.remove('ph-x');
+                    menuIcon.classList.add('ph-list');
+                });
+            });
+
+            // --- Header background change on scroll ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-sm', 'bg-bg-main/95');
+                    header.classList.remove('bg-bg-main/80');
+                } else {
+                    header.classList.remove('shadow-sm', 'bg-bg-main/95');
+                    header.classList.add('bg-bg-main/80');
+                }
+            });
+
+            // --- Animaciones Scroll (Reveal) ---
+            function reveal() {
+                var reveals = document.querySelectorAll(".reveal");
+                for (var i = 0; i < reveals.length; i++) {
+                    var windowHeight = window.innerHeight;
+                    var elementTop = reveals[i].getBoundingClientRect().top;
+                    var elementVisible = 100; // Cuándo se activa la animación
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveals[i].classList.add("active");
+                    }
+                }
+            }
+            
+            window.addEventListener("scroll", reveal);
+            // Llamar una vez al inicio por si elementos ya están en pantalla
+            reveal();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+    /* Nueva fuente profesional */
+    --font-family: 'Poppins', sans-serif;
+    
+    /* Colores del header */
+    --color-text-nav: #555555;
+    --color-hover-nav: #7bc74d; /* Mismo verde de tu banner principal */
+    
+    /* Mantenemos tus otros colores... */
+    --color-bg-main: #ffffff;
+    --color-text-main: #333333;
+    --color-text-muted: #666666;
+    --color-hero-bg: #7bc74d; 
+    --color-hero-btn: #ffa500; 
+    --color-contact-bg: #ffb6c1; 
+    
+    --border-radius-lg: 40px; 
+    --border-radius-md: 20px; 
+    --border-radius-sm: 10px;
+    --spacing-section: 80px;
+}

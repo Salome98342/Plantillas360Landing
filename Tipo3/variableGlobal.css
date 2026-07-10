@@ -1,0 +1,41 @@
+:root {
+    /* ----- PALETA DE COLORES ----- */
+    /* REEMPLAZAR: Colores principales de la marca */
+    --color-primary: #84CC16;       /* Verde lima (Ejemplo) */
+    --color-primary-hover: #65A30D; /* Tono más oscuro para hovers */
+    
+    /* REEMPLAZAR: Colores de fondo y superficies */
+    --color-bg-main: #F4F5F0;       /* Color de fondo principal de la página */
+    --color-bg-card: #9BEB24;       /* Color de fondo para las tarjetas de características */
+    --color-bg-section: #ADFA34;    /* Color de fondo para secciones destacadas */
+    
+    /* REEMPLAZAR: Colores de texto */
+    --color-text-dark: #1C1917;     /* Texto principal oscuro */
+    --color-text-muted: #57534E;    /* Texto secundario grisáceo */
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+
+    /* ----- TIPOGRAFÍA ----- */
+    /* REEMPLAZAR: Fuente tipográfica (asegúrate de importarla en el HTML) */
+    --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* ----- ESPACIADO (SPACING) ----- */
+    --spacing-xs: 0.5rem;   /* 8px */
+    --spacing-sm: 1rem;     /* 16px */
+    --spacing-md: 2rem;     /* 32px */
+    --spacing-lg: 4rem;     /* 64px */
+    --spacing-xl: 8rem;     /* 128px */
+
+    /* ----- BORDES Y SOMBRAS ----- */
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+    --border-radius-lg: 24px;
+    --border-radius-pill: 9999px;
+    
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    
+    /* ----- TRANSICIONES ----- */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.4s ease-out;
+}
