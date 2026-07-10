@@ -1,0 +1,27 @@
+/* variables.css */
+:root {
+    /* Paleta de Colores (Basada en la imagen, fácil de cambiar por cliente) */
+    --color-primary: #3c2a68;      /* Morado oscuro (Footer, textos principales) */
+    --color-secondary: #9b63f8;    /* Morado claro (Tarjetas resaltadas, botones) */
+    --color-accent: #fcedf6;       /* Rosa pálido (Fondo de tarjetas) */
+    --color-bg-light: #ffffff;     /* Fondo principal */
+    --color-bg-section: #faf8fc;   /* Fondo secundario para contrastar secciones */
+    
+    /* Textos */
+    --text-dark: #2d2346;
+    --text-muted: #6b637d;
+    --text-light: #ffffff;
+    
+    /* Tipografía */
+    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+    
+    /* Espaciados y Bordes */
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --radius-md: 12px;
+    --radius-lg: 24px;
+    
+    /* Animaciones */
+    --transition-fast: 0.3s ease;
+}
