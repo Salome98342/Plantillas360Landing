@@ -1,0 +1,31 @@
+/* ==========================================================================
+   VARIABLES GLOBALES - PANEL DE CONTROL VISUAL
+   [INFO CLIENTE: Modifica estos valores para adaptar toda la web a la marca]
+   ========================================================================== */
+
+:root {
+    /* Paleta de Colores Principales */
+    --color-primary: #4F46E5;       /* [INFO CLIENTE: Color Principal (Botones, acentos importantes)] */
+    --color-primary-hover: #4338CA; /* [INFO CLIENTE: Un tono más oscuro del principal para efectos hover] */
+    --color-secondary: #0F172A;     /* [INFO CLIENTE: Color Secundario (Textos oscuros, fondos de footer, etc.)] */
+    --color-accent: #10B981;        /* [INFO CLIENTE: Color de Acento (Iconos positivos, éxito o CTAs secundarios)] */
+    
+    /* Fondos y Textos */
+    --color-bg-light: #F8FAFC;      /* Fondo general de la página */
+    --color-bg-white: #FFFFFF;      /* Fondo de tarjetas, bloques limpios o header */
+    --color-text-main: #334155;     /* Color del texto general (párrafos y cuerpo) */
+    --color-text-title: #0F172A;    /* Color de títulos oscuros */
+    --color-text-light: #94A3B8;    /* Textos secundarios, sutiles o placeholders */
+    
+    /* Tipografía */
+    --font-main: 'Inter', sans-serif; /* [INFO CLIENTE: Cambiar si la marca requiere otra tipografía de Google Fonts] */
+    
+    /* Estilos de UI / Layout */
+    --border-radius: 8px;           /* [INFO CLIENTE: Usa 0px para un look cuadrado/minimalista o 24px para algo más orgánico/moderno] */
+    --box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    --transition-speed: 0.3s;       /* Velocidad global de las transiciones de botones y hovers */
+    
+    /* Espaciados Base */
+    --section-padding: 5rem 1rem;
+    --max-width: 1200px;
+}

@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- [INFO CLIENTE: Cambiar el título de la página por el nombre de la empresa del cliente] -->
+    <title>[INFO CLIENTE: Nombre de la Empresa] | [INFO CLIENTE: Eslogan o Servicio Principal]</title>
+    
+    <!-- [INFO CLIENTE: Añadir Favicon aquí si el cliente tiene uno] -->
+    <!-- <link rel="icon" type="image/x-icon" href="ruta-al-favicon.ico"> -->
+
+    <!-- Fuentes de Google: Inter para un look moderno y limpio. [INFO CLIENTE: Cambiar si la marca tiene tipografía propia] -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para iconos de placeholder y decorativos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           1. VARIABLES GLOBALES (El equivalente a tu variableGlobal.css)
+           [INFO CLIENTE: Modifica estos valores para adaptar toda la web a la marca]
+           ========================================================================== */
+        :root {
+            /* Paleta de Colores */
+            --color-primary: #4F46E5;      /* [INFO CLIENTE: Color Principal de la marca] */
+            --color-primary-hover: #4338CA;/* [INFO CLIENTE: Un tono más oscuro del principal] */
+            --color-secondary: #0F172A;    /* [INFO CLIENTE: Color Secundario (generalmente para textos oscuros o fondos de footer)] */
+            --color-accent: #10B981;       /* [INFO CLIENTE: Color de Acento (para llamadas a la acción secundarias o iconos)] */
+            
+            /* Fondos y Textos */
+            --color-bg-light: #F8FAFC;     /* Fondo general claro */
+            --color-bg-white: #FFFFFF;     /* Fondo de tarjetas o secciones limpias */
+            --color-text-main: #334155;    /* Color del texto general (párrafos) */
+            --color-text-title: #0F172A;   /* Color de títulos oscuros */
+            --color-text-light: #94A3B8;   /* Textos tenues o placeholders */
+            
+            /* Tipografía */
+            --font-main: 'Inter', sans-serif; /* [INFO CLIENTE: Cambiar si se requiere otra fuente de Google Fonts] */
+            
+            /* Estilos de UI */
+            --border-radius: 8px;          /* [INFO CLIENTE: Más alto para bordes redondeados (ej. 24px), 0px para bordes cuadrados] */
+            --box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition-speed: 0.3s;
+            
+            /* Espaciados Base */
+            --section-padding: 5rem 1rem;
+            --max-width: 1200px;
+        }
+
+        /* ==========================================================================
+           2. RESET & ESTILOS BASE
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Para el scroll suave en los enlaces del menú */
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-text-main);
+            background-color: var(--color-bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--color-text-title);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition-speed);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Contenedor principal para centrar el contenido */
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ==========================================================================
+           3. PLACEHOLDERS (Cajas grises para cuando no hay imágenes aún)
+           ========================================================================== */
+        .img-placeholder {
+            background-color: #E2E8F0;
+            border: 2px dashed #CBD5E1;
+            border-radius: var(--border-radius);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-light);
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            text-align: center;
+            padding: 2rem;
+        }
+        .img-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #94A3B8;
+        }
+
+        /* ==========================================================================
+           4. BOTONES
+           ========================================================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+            color: white;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        /* ==========================================================================
+           5. ANIMACIONES (Clases que el JS activará)
+           ========================================================================== */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Retrasos escalonados para elementos agrupados */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+
+        /* ==========================================================================
+           6. COMPONENTES: NAVEGACIÓN (HEADER)
+           ========================================================================== */
+        header {
+            background-color: var(--color-bg-white);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo-placeholder {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        /* [INFO CLIENTE: Si el cliente usa una imagen de logo, quitar texto y usar clase .logo-img] */
+        .logo-img {
+            max-height: 40px; /* Ajustar según logo real */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--color-text-main);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Menú Móvil Hamburger */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--color-text-title);
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           7. COMPONENTES: HERO SECTION (Sección Principal)
+           ========================================================================== */
+        .hero {
+            padding: 140px 0 80px; /* Padding extra superior por el header fijo */
+            background-color: var(--color-bg-light);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem); /* Texto fluido que se adapta */
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+            max-width: 90%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ==========================================================================
+           8. COMPONENTES: CARACTERÍSTICAS / SERVICIOS
+           ========================================================================== */
+        .features {
+            padding: var(--section-padding);
+            background-color: var(--color-bg-white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--color-bg-white);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border: 1px solid #F1F5F9;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #EEF2FF; /* Tono muy suave de primary */
+            color: var(--color-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ==========================================================================
+           9. COMPONENTES: SECCIÓN DE CONFIANZA / ACERCA DE
+           ========================================================================== */
+        .about {
+            padding: var(--section-padding);
+            background-color: var(--color-bg-light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        /* Invierte el orden visual si se requiere */
+        .about-grid.reversed .about-image {
+            order: -1;
+        }
+
+        .about-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .about-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-list i {
+            color: var(--color-accent);
+            margin-top: 0.3rem;
+        }
+
+        /* ==========================================================================
+           10. COMPONENTES: CALL TO ACTION FINAL (CTA Banner)
+           ========================================================================== */
+        .cta-banner {
+            padding: 6rem 1rem;
+            background-color: var(--color-primary);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-banner .btn {
+            background-color: white;
+            color: var(--color-primary);
+            font-size: 1.125rem;
+            padding: 1rem 2rem;
+        }
+
+        .cta-banner .btn:hover {
+            background-color: var(--color-bg-light);
+            transform: scale(1.05);
+        }
+
+        /* ==========================================================================
+           11. COMPONENTES: FOOTER
+           ========================================================================== */
+        footer {
+            background-color: var(--color-secondary);
+            color: white;
+            padding: 4rem 1rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            color: #94A3B8;
+            margin-top: 1rem;
+        }
+
+        .footer-title {
+            color: white;
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #94A3B8;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: background-color var(--transition-speed);
+        }
+
+        .social-links a:hover {
+            background-color: var(--color-primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94A3B8;
+            font-size: 0.875rem;
+        }
+
+        /* ==========================================================================
+           12. RESPONSIVE / MEDIA QUERIES (Adaptación a Móviles y Tablets)
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .hero-grid, .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .about-list {
+                text-align: left;
+                display: inline-block;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Menú Móvil */
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%; /* Oculto por defecto */
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--color-bg-white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: left 0.3s ease;
+                box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                left: 0; /* Menú abierto */
+            }
+
+            .nav-links a {
+                font-size: 1.25rem;
+            }
+
+            /* Ajustes Generales */
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =======================================================
+         HEADER / NAVEGACIÓN
+         ======================================================= -->
+    <header>
+        <div class="container nav-container">
+            <!-- [INFO CLIENTE: Logo Aquí. Descomentar etiqueta img y borrar el div si tienen imagen] -->
+            <a href="#" class="logo-placeholder">
+                <i class="fa-solid fa-bolt"></i> <!-- Icono decorativo -->
+                [INFO CLIENTE: LOGO]
+                <!-- <img src="ruta-al-logo.png" alt="Logo de la Empresa" class="logo-img"> -->
+            </a>
+
+            <!-- Botón Hamburguesa para Móviles -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Enlaces de Navegación -->
+            <nav class="nav-links" id="nav-links">
+                <!-- [INFO CLIENTE: Modificar nombres y enlaces según las secciones reales] -->
+                <a href="#servicios">Servicios</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#testimonios">Testimonios</a>
+                <a href="#contacto" class="btn btn-primary" style="color: white;">[INFO CLIENTE: Botón CTA ej. Contáctanos]</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- =======================================================
+         HERO SECTION (Banner Principal)
+         ======================================================= -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content animate-on-scroll">
+                <!-- [INFO CLIENTE: Textos Principales] -->
+                <h1>[INFO CLIENTE: Título principal atractivo que capte la atención, Máx 6-8 palabras]</h1>
+                <p>[INFO CLIENTE: Subtítulo que explique brevemente el valor de la empresa, el problema que resuelven y para quién. Máx 3 líneas.]</p>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-primary">[INFO CLIENTE: Botón Principal Ej. Cotizar Ahora]</a>
+                    <a href="#servicios" class="btn btn-outline">[INFO CLIENTE: Botón Secundario Ej. Ver Servicios]</a>
+                </div>
+            </div>
+            
+            <div class="hero-image animate-on-scroll delay-200">
+                <!-- [INFO CLIENTE: Remplazar este bloque div por la imagen/foto real del Hero] -->
+                <div class="img-placeholder" style="min-height: 400px;">
+                    <i class="fa-solid fa-image"></i>
+                    <h3>[INFO CLIENTE: Imagen Principal]</h3>
+                    <p>Dimensiones recomendadas: 800x600px o formato cuadrado.</p>
+                    <!-- <img src="ruta-imagen.jpg" alt="Descripción para SEO"> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =======================================================
+         SECCIÓN: SERVICIOS / CARACTERÍSTICAS
+         ======================================================= -->
+    <section id="servicios" class="features">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>[INFO CLIENTE: Título de la sección de servicios o beneficios]</h2>
+                <p>[INFO CLIENTE: Breve descripción de por qué estos servicios son la mejor opción.]</p>
+            </div>
+
+            <div class="features-grid">
+                <!-- Tarjeta 1 -->
+                <div class="feature-card animate-on-scroll delay-100">
+                    <div class="feature-icon">
+                        <!-- [INFO CLIENTE: Cambiar icono de FontAwesome ej. fa-chart-line] -->
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h3>[INFO CLIENTE: Servicio 1]</h3>
+                    <p>[INFO CLIENTE: Descripción del servicio 1. Explica el beneficio directo para el usuario.]</p>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="feature-card animate-on-scroll delay-200">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3>[INFO CLIENTE: Servicio 2]</h3>
+                    <p>[INFO CLIENTE: Descripción del servicio 2. Explica el beneficio directo para el usuario.]</p>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="feature-card animate-on-scroll delay-300">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3>[INFO CLIENTE: Servicio 3]</h3>
+                    <p>[INFO CLIENTE: Descripción del servicio 3. Explica el beneficio directo para el usuario.]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =======================================================
+         SECCIÓN: NOSOTROS / CÓMO FUNCIONA (Con Imagen Lateral)
+         ======================================================= -->
+    <section id="nosotros" class="about">
+        <div class="container about-grid">
+            <div class="about-image animate-on-scroll">
+                <!-- [INFO CLIENTE: Remplazar por imagen del equipo o producto] -->
+                <div class="img-placeholder">
+                    <i class="fa-solid fa-users"></i>
+                    <h3>[INFO CLIENTE: Imagen Equipo / Producto]</h3>
+                </div>
+            </div>
+            
+            <div class="about-content animate-on-scroll delay-200">
+                <h2>[INFO CLIENTE: Título de sección Nosotros o 'Por qué elegirnos']</h2>
+                <p>[INFO CLIENTE: Texto persuasivo sobre la experiencia de la empresa, años en el mercado o filosofía de trabajo.]</p>
+                
+                <ul class="about-list">
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>[INFO CLIENTE: Punto fuerte 1 ej. Soporte 24/7]</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>[INFO CLIENTE: Punto fuerte 2 ej. Garantía de satisfacción]</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>[INFO CLIENTE: Punto fuerte 3 ej. Equipo experto]</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- =======================================================
+         SECCIÓN: CTA BANNER FINAL (Llamado a la acción)
+         ======================================================= -->
+    <section id="contacto" class="cta-banner">
+        <div class="container animate-on-scroll">
+            <h2>[INFO CLIENTE: Título del llamado a la acción final]</h2>
+            <p>[INFO CLIENTE: Último mensaje de convencimiento. Ej: ¿Listo para llevar tu proyecto al siguiente nivel? Contáctanos hoy mismo.]</p>
+            <!-- [INFO CLIENTE: Enlace del botón puede llevar a WhatsApp, Formulario o Correo] -->
+            <a href="#" class="btn">[INFO CLIENTE: Texto del Botón Final] <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+        </div>
+    </section>
+
+    <!-- =======================================================
+         FOOTER (Pie de página)
+         ======================================================= -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Columna de Marca -->
+                <div class="footer-brand">
+                    <a href="#" class="logo-placeholder" style="color: white;">
+                        <i class="fa-solid fa-bolt"></i>
+                        [INFO CLIENTE: LOGO]
+                    </a>
+                    <p>[INFO CLIENTE: Breve descripción de la empresa para el footer, dirección fiscal o slogan secundario.]</p>
+                    <div class="social-links">
+                        <!-- [INFO CLIENTE: Enlaces a Redes Sociales] -->
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Enlaces Útiles -->
+                <div>
+                    <h4 class="footer-title">Enlaces</h4>
+                    <ul class="footer-links">
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#nosotros">Sobre Nosotros</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto Rápido -->
+                <div>
+                    <h4 class="footer-title">Contacto</h4>
+                    <ul class="footer-links">
+                        <li><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> [INFO CLIENTE: email@empresa.com]</li>
+                        <li><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> [INFO CLIENTE: +00 123 456 789]</li>
+                        <li><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> [INFO CLIENTE: Ciudad, País]</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> [INFO CLIENTE: Nombre de la Empresa]. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =======================================================
+         SCRIPTS: Funcionalidades e Interacciones
+         ======================================================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Funcionalidad del Menú Móvil (Hamburguesa)
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+            const mobileBtnIcon = mobileBtn.querySelector('i');
+
+            mobileBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                
+                // Cambiar icono de hamburguesa a "X"
+                if(navLinks.classList.contains('active')) {
+                    mobileBtnIcon.classList.remove('fa-bars');
+                    mobileBtnIcon.classList.add('fa-xmark');
+                } else {
+                    mobileBtnIcon.classList.remove('fa-xmark');
+                    mobileBtnIcon.classList.add('fa-bars');
+                }
+            });
+
+            // Cerrar menú móvil al hacer clic en un enlace
+            const navItems = navLinks.querySelectorAll('a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                        mobileBtnIcon.classList.remove('fa-xmark');
+                        mobileBtnIcon.classList.add('fa-bars');
+                    }
+                });
+            });
+
+            // 2. Animaciones al hacer scroll (Intersection Observer)
+            // Esto detecta cuando un elemento entra en la pantalla y le añade la clase 'is-visible'
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // El 15% del elemento debe ser visible para disparar la animación
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Dejamos de observar el elemento una vez que ya se animó para mejor rendimiento
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => observer.observe(el));
+
+            // 3. Actualizar año automático en el Footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
